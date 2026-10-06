@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chiến dịch SkyTicket</title>
+  </head>
+  <body>
+    <h2>Hệ thống đặt vé Máy bay SkyTicket</h2>
+    <form>
+      <h3>Điền các thông tin sau:</h3>
+      <fieldset>
+        <legend>Thông tin khách hàng</legend>
+        <label for="pass">
+          Mật khẩu:
+          <input type="password" id="pass" placeholder="Nhập mật khẩu" />
+        </label>
+        <br />
+        <br />
+        <label for="passport">
+          Hộ chiếu:
+          <input
+            type="number"
+            name=""
+            id="passport"
+            placeholder="Nhập id hộ chiếu"
+          /> </label
+        ><br /><br />
+        <label for="age">
+          Tuổi:
+          <input type="number" name="" id="age" placeholder="Nhập tuổi" />
+        </label>
+        <br />
+        <br />
+        <label for="position">
+          Chỗ ngồi:
+          <select name="" id="position">
+            <option value="Class">Phổ thông</option>
+            <option value="Business">Thương gia</option>
+            <option value="Vip">Hạng nhất</option>
+          </select> </label
+        ><br /><br />
+        <label for="money">
+          Số dư:
+          <input type="number" name="" id="money" placeholder="Nhập số dư" />
+        </label>
+      </fieldset>
+    </form>
+    <br />
+    <button onclick="check()"><b>Booking now</b></button>
+    <button onclick="location.reload()"><b>Reload page</b></button> <br /><br />
+    <div id="result1" style="color: blue"></div>
+    <div id="result" style="color: red"></div>
+    <script>
+      const system_password = "12345";
+      const system_money_class = 1000;
+      const system_money_business = 2000;
+      const system_money_vip = 3000;
+      function check() {
+        //1. Lấy dữ liệu
+        let user_password = document.getElementById("pass").value;
+        let user_passport = Number(document.getElementById("passport").value);
+        let user_age = parseInt(document.getElementById("age").value);
+        let user_position = document.getElementById("position").value;
+        let user_money = parseInt(document.getElementById("money").value);
+
+        //2. Kiểm tra các điều kiện cần
+        if (user_password !== system_password) {
+          document.getElementById("result").innerHTML = "Mật khẩu không đúng!";
+          return;
+        }
+        if (isNaN(user_passport)) {
+          document.getElementById("result").innerHTML =
+            "ID hộ chiếu không khớp!";
+          return;
+        }
+        if (isNaN(user_age) || user_age < 18) {
+          document.getElementById("result").innerHTML = "Chưa đủ tuổi!";
+          return;
+        }
+        if (isNaN(user_money) || user_money < 0) {
+          document.getElementById("result").innerHTML =
+            "Số dư không đủ điều kiện mua vé";
+          return;
+        }
+
+        switch (user_position) {
+          case "Class":
+            if (user_money < system_money_class) return;
+            break;
+          case "Business":
+            if (user_money < system_money_business) return;
+            break;
+          case "Vip":
+            if (user_money < system_money_vip) return;
+            break;
+          default:
+            return;
+        }
+        document.getElementById("result1").innerHTML =
+          "Đặt vé máy bay thành công!";
+      }
+    </script>
+  </body>
+</html>
