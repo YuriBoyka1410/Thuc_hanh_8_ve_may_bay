@@ -1,0 +1,18 @@
+===== PROMPT 01 =====
+
+Tôi đang làm bài tập SkyTicket...
+[nguyên văn câu hỏi của tôi]
+
+===== AI RESPONSE 01 =====
+
+[nguyên văn câu trả lời của AI]
+
+
+===== PROMPT 02 =====
+
+Tại sao document.getElementById("position").value...
+[nguyên văn câu hỏi]
+
+===== AI RESPONSE 02 =====
+
+[nguyên văn câu trả lời của AI]
